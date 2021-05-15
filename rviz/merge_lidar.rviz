@@ -146,7 +146,7 @@ Visualization Manager:
   Global Options:
     Background Color: 48; 48; 48
     Default Light: true
-    Fixed Frame: map
+    Fixed Frame: front_lidar
     Frame Rate: 30
   Name: root
   Tools:
@@ -170,7 +170,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 15.61174201965332
+      Distance: 12.233185768127441
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -185,10 +185,10 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 1.0503977537155151
+      Pitch: 1.2053974866867065
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 1.0553975105285645
+      Yaw: 4.153580665588379
     Saved: ~
 Window Geometry:
   Displays:
