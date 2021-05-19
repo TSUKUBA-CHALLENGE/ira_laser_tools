@@ -2,9 +2,10 @@
   <!-- <static_transform_publisher x y z yaw pitch roll frame_id child_frame_id period_in_ms> 
   Publish a static coordinate transform to tf using an x/y/z offset and yaw/pitch/roll. 
   The period, in milliseconds, specifies how often to send a transform. 100ms (10hz) is a good value. -->
-  <node pkg="tf" type="static_transform_publisher" name="front_to_back" args=" -0.2 0 0 3.14 0 0 front_lidar back_lidar 100" />
+  <!--<node pkg="tf" type="static_transform_publisher" name="front_to_back" args=" -0.2 0 0 3.14 0 0 front_lidar back_lidar 100" />-->
+  <node pkg="tf" type="static_transform_publisher" name="front_to_camera" args=" 0 0 0.05 0 0 0 front_lidar camera_link 100" />
   
   <include file="$(find ira_laser_tools)/launch/laserscan_multi_merger.launch" ></include>
 
-  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find ira_laser_tools)/rviz/merge_lidar.rviz" />
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find ira_laser_tools)/rviz/depth_lider_integrate.rviz" />
 </launch>
