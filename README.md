@@ -35,3 +35,8 @@ Both nodes compile under catkin in hydro/indigo and use PCL1.7
 
 - 北陽lidar(URM-40LC-EW)
 - rplidar s1
+
+publishするtopic名
+
+- 北陽lidar : /scan_urg
+- rplidar   : /scan_rplidar
