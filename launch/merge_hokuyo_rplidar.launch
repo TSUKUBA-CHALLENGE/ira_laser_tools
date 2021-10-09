@@ -16,7 +16,7 @@
     </node>	
 
     <!-- second laser : rplidar s1 -->
-    <node name="rplidar"          pkg="rplidar_ros"  type="rplidarNode" output="screen">
+    <node name="rplidar" pkg="rplidar_ros" type="rplidarNode" output="screen">
         <remap from="/scan" to="/scan_rplidar" />
         <param name="serial_port"         type="string" value="/dev/ttyUSB0"/>
         <param name="serial_baudrate"     type="int"    value="115200"/>
