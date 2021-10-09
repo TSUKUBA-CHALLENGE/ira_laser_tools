@@ -1,0 +1,43 @@
+<launch>
+    <!-- 静的座標変換の値は実際のロボットの位置情報から計測して設定する必要がある -->
+    <node pkg="tf" type="static_transform_publisher" name="base_to_hokuyo" args=" -0.2 0 0 3.14 0 0 base_link hokuyo 100" />
+    <node pkg="tf" type="static_transform_publisher" name="hokuyo_to_rplider" args=" -0.2 0 0 3.14 0 0 hokuyo rplidar 100" />
+
+    <!-- first laser : hokoyo urg -->
+    <node name="urg_node" pkg="urg_node" type="urg_node" output="screen">
+        <remap from="/scan" to="/scan_hokuyo" />	
+        <param name="ip_address" value="192.168.0.10"/>
+        <param name="frame_id" value="hokuyo"/>
+        <param name="calibrate_time" value="true"/>
+        <param name="publish_intensity" value="false"/>
+        <param name="publish_multiecho" value="false"/>
+        <param name="angle_min" value="-2.35619"/>
+        <param name="angle_max" value="1.5707963"/>
+    </node>	
+
+    <!-- second laser : rplidar s1 -->
+    <node name="rplidar"          pkg="rplidar_ros"  type="rplidarNode" output="screen">
+        <remap from="/scan" to="/scan_rplidar" />
+        <param name="serial_port"         type="string" value="/dev/ttyUSB0"/>
+        <param name="serial_baudrate"     type="int"    value="115200"/>
+        <param name="frame_id"            type="string" value="rplidar"/>
+        <param name="inverted"            type="bool"   value="false"/>
+        <param name="angle_compensate"    type="bool"   value="true"/>
+    </node>	
+
+    <node pkg="ira_laser_tools" name="laserscan_multi_merger" type="laserscan_multi_merger" output="screen">
+        <!--<param name="destination_frame" value="cart_frame"/>-->
+        <param name="destination_frame" value="hokuyo"/>
+        <param name="cloud_destination_topic" value="/merged_cloud"/>
+        <param name="scan_destination_topic" value="/scan"/>
+        <param name="laserscan_topics" value ="/scan_hokuyo /scan_rplidar" /> <!-- LIST OF THE LASER SCAN TOPICS TO SUBSCRIBE -->
+        <param name="angle_min" value="-3.14159"/>
+        <param name="angle_max" value="3.14159"/>
+        <param name="angle_increment" value="0.0058"/>
+        <param name="scan_time" value="0.0333333"/>
+        <param name="range_min" value="0.05"/>
+        <param name="range_max" value="50.0"/>
+    </node>
+    
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find ira_laser_tools)/rviz/merge_hokuyo_rplidar.rviz" />
+</launch>
