@@ -29,7 +29,7 @@ Paper link: https://arxiv.org/abs/1411.1086
 
 Both nodes compile under catkin in hydro/indigo and use PCL1.7
 
-# 実環境での使用方法
+# 実環境での使用方法と統合対象
 
 統合対象
 
@@ -40,3 +40,7 @@ publishするtopic名
 
 - 北陽lidar : /scan_urg
 - rplidar   : /scan_rplidar
+
+# ira_laser_toolsの詳細な使用方法について
+
+[ira_laser_toolsを使用して2つのlidarのscanデータを統合しよう！](https://qiita.com/MMM-lab/items/84cdf9a8ad97324e10ed)
