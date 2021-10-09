@@ -28,3 +28,10 @@ furlan@disco.unimib.it or augusto.ballardini@unimib.it
 Paper link: https://arxiv.org/abs/1411.1086
 
 Both nodes compile under catkin in hydro/indigo and use PCL1.7
+
+# 実環境での使用方法
+
+統合対象
+
+- 北陽lidar(URM-40LC-EW)
+- rplidar s1
