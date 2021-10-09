@@ -39,7 +39,7 @@ Both nodes compile under catkin in hydro/indigo and use PCL1.7
 publishするtopic名
 
 - 北陽lidar : /scan_urg
-- rplidar   : /scan_rplidar
+- rplidar s1 : /scan_rplidar
 
 # ira_laser_toolsの詳細な使用方法について
 
