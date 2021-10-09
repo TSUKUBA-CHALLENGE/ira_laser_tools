@@ -38,8 +38,19 @@ Both nodes compile under catkin in hydro/indigo and use PCL1.7
 
 publishするtopic名
 
-- 北陽lidar : /scan_urg
+- 北陽lidar : /scan_hokuyo
 - rplidar s1 : /scan_rplidar
+
+### urg_nodeインストール
+
+```bash
+sudo apt-get install ros-melodic-urg-node
+```
+
+### 実行方法
+```bash
+roslaunch ira_laser_tools merge_hokuyo_rplidar.launch
+```
 
 # ira_laser_toolsの詳細な使用方法について
 
