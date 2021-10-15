@@ -1,4 +1,6 @@
 <launch>
+    <arg name="with_rviz" default="false"/>
+
     <!-- 静的座標変換の値は実際のロボットの位置情報から計測して設定する必要がある -->
     <node pkg="tf" type="static_transform_publisher" name="base_to_hokuyo" args=" -0.2 0 0 3.14 0 0 base_link hokuyo 100" />
     <node pkg="tf" type="static_transform_publisher" name="hokuyo_to_rplider" args=" -0.2 0 0 3.14 0 0 hokuyo rplidar 100" />
@@ -39,5 +41,5 @@
         <param name="range_max" value="50.0"/>
     </node>
     
-    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find ira_laser_tools)/rviz/merge_hokuyo_rplidar.rviz" />
+    <node if="$(arg with_rviz)" name="rviz" pkg="rviz" type="rviz" args="-d $(find ira_laser_tools)/rviz/merge_hokuyo_rplidar.rviz" />
 </launch>
